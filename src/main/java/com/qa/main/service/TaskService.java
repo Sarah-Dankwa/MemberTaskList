@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.qa.main.model.Task;
 import com.qa.main.repository.TaskRepository;
 
+@Service
 public class TaskService implements TaskServiceMethods {
 
 	private Task task;
