@@ -27,8 +27,8 @@ public class MemberServiceUnitTest {
 	@Test
 	public void addMemberServiceTest() {
 
-		Member savedMember = new Member("Susie Smith");
-		Member repoMember = new Member(1L, "Susie Smith");
+		Member savedMember = new Member("Susie Smith", "sus@gmail.com", "manchester");
+		Member repoMember = new Member(1L, "Susie Smith", "sus@gmail.com", "manchester");
 
 		Mockito.when(this.service.addMember(savedMember)).thenReturn(repoMember);
 
@@ -39,7 +39,7 @@ public class MemberServiceUnitTest {
 
 	@Test
 	public void removeMemberServiceTest() {
-		Member repoMember = new Member(1L, "Susie Smith");
+		Member repoMember = new Member(1L, "Susie Smith", "sus@gmail.com", "manchester");
 
 		Mockito.when(this.service.removeMember(1L)).thenReturn(false);
 
@@ -47,9 +47,9 @@ public class MemberServiceUnitTest {
 
 	@Test
 	public void getAllMembersTest() {
-		Member testMember1 = new Member(1L, "Susie Smith");
-		Member testMember2 = new Member(2L, "Paula Smith");
-		Member testMember3 = new Member(3L, "Daniel Smith");
+		Member testMember1 = new Member(1L, "Susie Smith", "sus@gmail.com", "manchester");
+		Member testMember2 = new Member(2L, "Paula Smith", "pup@gmail.com", "manchester");
+		Member testMember3 = new Member(3L, "Daniel Smith", "dan@hotmail.co.uk", "liverpool");
 
 		List<Member> record = new ArrayList<>();
 
@@ -59,7 +59,7 @@ public class MemberServiceUnitTest {
 
 	@Test
 	public void getMemberByIdServiceTest() {
-		Member repoMember = new Member(1L, "Susie Smith");
+		Member repoMember = new Member(1L, "Susie Smith", "sus@gmail.com", "manchester");
 
 		Mockito.when(repo.findById(repoMember.getId())).thenReturn(Optional.of(repoMember));
 

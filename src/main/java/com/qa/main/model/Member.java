@@ -26,6 +26,12 @@ public class Member {
 	@Column(nullable = false, name = "member_name")
 	private String memberName;
 
+	@Column(nullable = false, name = "member_email")
+	private String memberEmail;
+
+	@Column(nullable = false, name = "member_location")
+	private String memberLocation;
+
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "member_id", referencedColumnName = "id")
 	private Set<Task> tasks;
@@ -36,35 +42,41 @@ public class Member {
 	}
 
 	@Autowired
-	public Member(long id, String memberName, Set<Task> tasks) {
+	public Member(long id, String memberName, String memberEmail, String memberLocation, Set<Task> tasks) {
 		this.id = id;
 		this.memberName = memberName;
+		this.memberEmail = memberEmail;
+		this.memberLocation = memberLocation;
 		this.tasks = tasks;
 	}
 
 	@Autowired
-	public Member(long id, String memberName) {
-		super();
+	public Member(long id, String memberName, String memberEmail, String memberLocation) {
 		this.id = id;
 		this.memberName = memberName;
+		this.memberEmail = memberEmail;
+		this.memberLocation = memberLocation;
 	}
 
 	@Autowired
-	public Member(String memberName, Set<Task> tasks) {
-		super();
+	public Member(String memberName, String memberEmail, String memberLocation, Set<Task> tasks) {
 		this.memberName = memberName;
+		this.memberEmail = memberEmail;
+		this.memberLocation = memberLocation;
 		this.tasks = tasks;
 	}
 
 	@Autowired
-	public Member(String memberName) {
-		super();
+	public Member(String memberName, String memberEmail, String memberLocation) {
 		this.memberName = memberName;
+		this.memberEmail = memberEmail;
+		this.memberLocation = memberLocation;
 	}
 
 	@Override
 	public String toString() {
-		return "Member [id=" + id + ", memberName=" + memberName + "]";
+		return "Member [id=" + id + ", memberName=" + memberName + ", memberEmail=" + memberEmail + ", memberLocation="
+				+ memberLocation + "]";
 	}
 
 	public long getId() {
@@ -83,6 +95,22 @@ public class Member {
 		this.memberName = memberName;
 	}
 
+	public String getMemberEmail() {
+		return memberEmail;
+	}
+
+	public void setMemberEmail(String memberEmail) {
+		this.memberEmail = memberEmail;
+	}
+
+	public String getMemberLocation() {
+		return memberLocation;
+	}
+
+	public void setMemberLocation(String memberLocation) {
+		this.memberLocation = memberLocation;
+	}
+
 	public Set<Task> getTasks() {
 		return tasks;
 	}
@@ -93,7 +121,7 @@ public class Member {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(memberName, tasks);
+		return Objects.hash(memberEmail, memberLocation, memberName, tasks);
 	}
 
 	@Override
@@ -105,7 +133,8 @@ public class Member {
 		if (getClass() != obj.getClass())
 			return false;
 		Member other = (Member) obj;
-		return Objects.equals(memberName, other.memberName) && Objects.equals(tasks, other.tasks);
+		return Objects.equals(memberEmail, other.memberEmail) && Objects.equals(memberLocation, other.memberLocation)
+				&& Objects.equals(memberName, other.memberName) && Objects.equals(tasks, other.tasks);
 	}
 
 }

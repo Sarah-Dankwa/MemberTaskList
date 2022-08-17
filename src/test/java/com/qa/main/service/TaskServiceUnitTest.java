@@ -35,8 +35,8 @@ public class TaskServiceUnitTest {
 	@Test
 	public void addTaskServiceTest() {
 
-		Member newMember = new Member("Susie");
-		Member newMemberR = new Member(1L, "Susie");
+		Member newMember = new Member("Susie Smith", "sus@gmail.com", "manchester");
+		Member newMemberR = new Member(1L, "Susie Smith", "sus@gmail.com", "manchester");
 
 		Task savedTask = new Task("Do something", 1L);
 		Task repoTask = new Task(1L, "Do something", 1L);
@@ -53,8 +53,8 @@ public class TaskServiceUnitTest {
 	@Test
 	public void removeTaskServiceTest() {
 
-		Member newMember = new Member("Susie");
-		Member newMemberR = new Member(1L, "Susie");
+		Member newMember = new Member("Susie Smith", "sus@gmail.com", "manchester");
+		Member newMemberR = new Member(1L, "Susie Smith", "sus@gmail.com", "manchester");
 
 		Mockito.when(this.mservice.addMember(newMember)).thenReturn(newMemberR);
 

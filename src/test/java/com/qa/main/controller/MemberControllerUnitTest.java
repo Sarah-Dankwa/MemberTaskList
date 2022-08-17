@@ -33,7 +33,7 @@ public class MemberControllerUnitTest {
 
 	@Test
 	public void addMemberTest() throws Exception {
-		Member testMember = new Member("Simon Cowell");
+		Member testMember = new Member("Simon Cowell", "sc@outlook.com", "london");
 		String testMemberAsJson = this.mapper.writeValueAsString(testMember);
 
 		Mockito.when(this.service.addMember(testMember)).thenReturn(testMember);
@@ -46,9 +46,9 @@ public class MemberControllerUnitTest {
 
 	@Test
 	public void getAllMembersTest() throws JsonProcessingException {
-		Member testMember1 = new Member(1L, "Susie Smith");
-		Member testMember2 = new Member(2L, "Paula Smith");
-		Member testMember3 = new Member(3L, "Daniel Smith");
+		Member testMember1 = new Member(1L, "Susie Smith", "sus@gmail.com", "manchester");
+		Member testMember2 = new Member(2L, "Paula Smith", "pup@gmail.com", "manchester");
+		Member testMember3 = new Member(3L, "Daniel Smith", "dan@hotmail.co.uk", "liverpool");
 
 		String testMember1AsJson = this.mapper.writeValueAsString(testMember1);
 		String testMember2AsJson = this.mapper.writeValueAsString(testMember2);
@@ -64,7 +64,7 @@ public class MemberControllerUnitTest {
 
 	@Test
 	public void getMemberByIdTest() throws JsonProcessingException {
-		Member testMember = new Member(1L, "Susie Smith");
+		Member testMember = new Member(1L, "Susie Smith", "sus@gmail.com", "manchester");
 		String testMemberAsJson = this.mapper.writeValueAsString(testMember);
 
 		Mockito.when(this.service.getMemberByID(1)).thenReturn(testMember);
