@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>Member Cub</title>
+
+</head>
+
+<header>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Join our club!</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Add member</a></li>
+                <li class="active"><a href="#">Add task</a></li>
+            </ul>
+        </div>
+    </nav>
+
+</header>
+
+<body>
+
+    <div class="container">
+        <h2>Member's Club</h2>
+
+        <form id="name-form">
+
+            <label for="name">Name:</label>
+            <input id="name" placeholder="Enter member name">
+        </form>
+            
+        <form id="email-form">
+                <label for="email">Email:</label>
+                <input id="email" placeholder="Enter member email">
+            </form>
+
+            <form id="location-form">
+            <label for="location">Location:</label>
+            <input id="location" placeholder="Enter the city you are in">
+
+        </form>
+        
+            <button type="button" class="submit-member"><i class="fa-solid fa-user-plus"></i></button>
+       
+        </form>
+    </div>
+
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
