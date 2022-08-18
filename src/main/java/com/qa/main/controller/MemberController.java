@@ -3,6 +3,8 @@ package com.qa.main.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -57,6 +60,14 @@ public class MemberController {
 		Member member = service.getMemberByID(id);
 
 		return new ResponseEntity<Member>(member, HttpStatus.ACCEPTED);
+
+	}
+
+	@PutMapping("/update/{memberID}")
+	public Member updateMember(@PathParam("memberName") String memberName, @PathParam("memberEmail") String memberEmail,
+			@PathParam("memberLocation") String memberLocation, @PathVariable("memberID") Long memberID,
+			@RequestBody Member member) {
+		return service.updateMember(memberID, member);
 
 	}
 

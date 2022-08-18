@@ -44,4 +44,15 @@ public class MemberService implements MemberServiceMethods {
 		return !exists;
 	}
 
+	public Member updateMember(Long memberID, Member newMember) {
+		Optional<Member> existingOptional = repo.findById(memberID);
+		Member existing = existingOptional.get();
+
+		existing.setMemberName(newMember.getMemberName());
+		existing.setMemberEmail(newMember.getMemberEmail());
+		existing.setMemberLocation(newMember.getMemberLocation());
+
+		return repo.save(existing);
+	}
+
 }

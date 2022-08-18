@@ -1,21 +1,16 @@
 window.addEventListener('load', () => {
 
-    const backToForm = document.querySelector("#add-another");
+    const tableElement = document.querySelector("#table");
 
-    backToForm.addEventListener('click' , () => {
-        window.location.href = "./index.html"; 
-    })
-    
-
-    fetch("http://localhost:8081/home/getMembers").then ((data) => {
+    fetch("http://localhost:8081/home/getMembers").then((data) => {
         // console.log(data);
         return data.json();
-    }) .then((objectData) => {
+    }).then((objectData) => {
         console.log(objectData[0].id);
         let tableData = "";
         objectData.map((values) => {
-            tableData += `<tr>
-            <td>${values.id}</td>
+            tableData += `<tr class="memberValue">
+            <td id="id">${values.id}</td>
             <td>${values.memberName}</td>
             <td>${values.memberEmail}</td>
             <td>${values.memberLocation}</td>
@@ -26,24 +21,80 @@ window.addEventListener('load', () => {
         </tr>`;
 
         });
-        document.getElementById("table-body").innerHTML = tableData;
+            document.getElementById("table-body").innerHTML = tableData;
+    }) .catch((err) => console.log(err));
+
+
+   
+    tableElement.addEventListener('click', deleteMember);
+    tableElement.addEventListener('click', updateElement);
+
+    function deleteMember(e) {
+        if(e.target.classList.contains("delete-member")) {
+            return;
+           
+        const deleteButton = e.target;
+        var id = parsteInt(deleteButton.closest("#id").value);
+        // var id = document.querySelector("id");
+        // var id = parseInt(row.value);
+
+        fetch(`http://localhost:8081/home/deleteMember/ ${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(response => console.log(response))
+            .then(() => {
+                console.log("Delete successful");
+               
+            })
+            .catch(err => console.error(`error ${err}`));
+    }
+
+    }
+
+     
+       
+
+    function updateElement(e) {
+        if(e.target.classList.contains("update-member")) {
+            return;            
+        } const update = e.target;
+        
+        window.location.href = "./index.html";  
+
+    }
+       
+     
+    
+
+})
+
+   
+
+    const backToForm = document.querySelector("#add-another");
+
+    backToForm.addEventListener('click', () => {
+        window.location.href = "./index.html";
     })
-
-
-    const deleteMember = document.querySelector("#delete-member");
-
-    deleteMember.addEventListener('click', (e) => {
-        e.preventDefault();
-
-
-    })
-
-
 
   
+    
 
+    // const deleteMember = document.querySelector("#delete-member");
+
+   
         
+   
 
 
-    })
+    
+
+
+
+
+
+
+
 
