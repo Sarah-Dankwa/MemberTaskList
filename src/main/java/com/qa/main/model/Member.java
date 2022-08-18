@@ -20,7 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class Member {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY	)
 	private long id;
 
 	@Column(nullable = false, name = "member_name")
